@@ -1,0 +1,281 @@
+Set angazF = ##class(ProdukcjeFilmowe.AngazFilm).%New()
+Set angazF.Bonus = 1000
+Set angazF.Rola.Nazwa = "Rola pierwszoplanowa"
+Set angazF.Rola.Stawka = 3000
+Set sAngazF = angazF.%Save()
+Do $system.OBJ.DisplayError(sAngazF)
+Set angazF = ##class(ProdukcjeFilmowe.AngazFilm).%OpenId(1)
+
+Set angazF = ##class(ProdukcjeFilmowe.AngazFilm).%New()
+Set angazF.Bonus = 800
+Set angazF.Rola.Nazwa = "Rola drugoplanowa"
+Set angazF.Rola.Stawka = 1200
+Set sAngazF = angazF.%Save()
+Do $system.OBJ.DisplayError(sAngazF)
+Set angazF = ##class(ProdukcjeFilmowe.AngazFilm).%OpenId(2)
+
+Set angazF = ##class(ProdukcjeFilmowe.AngazFilm).%New()
+Set angazF.Bonus = 400
+Set angazF.Rola.Nazwa = "Scenarzysta"
+Set angazF.Rola.Stawka = 1800
+Set sAngazF = angazF.%Save()
+Do $system.OBJ.DisplayError(sAngazF)
+Set angazF = ##class(ProdukcjeFilmowe.AngazFilm).%OpenId(3)
+
+Set angazF = ##class(ProdukcjeFilmowe.AngazFilm).%New()
+Set angazF.Bonus = 300
+Set angazF.Rola.Nazwa = "Dubler"
+Set angazF.Rola.Stawka = 800
+Set sAngazF = angazF.%Save()
+Do $system.OBJ.DisplayError(sAngazF)
+Set angazF = ##class(ProdukcjeFilmowe.AngazFilm).%OpenId(4)
+
+
+
+Set angaz = ##class(ProdukcjeFilmowe.Angaz).%New()
+Set angaz.Bonus = 350
+Set angaz.Rola.Nazwa = "Rola pierwszoplanowa"
+Set angaz.Rola.Stawka = 2000
+Set sAngaz = angaz.%Save()
+Do $system.OBJ.DisplayError(sAngaz)
+Set angaz = ##class(ProdukcjeFilmowe.Angaz).%OpenId(1)
+
+Set angaz = ##class(ProdukcjeFilmowe.Angaz).%New()
+Set angaz.Bonus = 100
+Set angaz.Rola.Nazwa = "Statysta"
+Set angaz.Rola.Stawka = 600
+Set sAngaz = angaz.%Save()
+Do $system.OBJ.DisplayError(sAngaz)
+Set angaz = ##class(ProdukcjeFilmowe.Angaz).%OpenId(2)
+
+
+
+Set osoba = ##class(ProdukcjeFilmowe.Osoba).%New()
+Set osoba.Imie = "Jan"
+Set osoba.Nazwisko = "Nowak"
+Set osoba.DataUrodzenia = $ZDATEH("10/22/1990")     
+Set osoba.Pochodzenie = "USA"
+Set osoba.AngazeFilmowe = ##class(ProdukcjeFilmowe.AngazFilm).%OpenId(1)
+Set osoba.AngazeSeriali = ##class(ProdukcjeFilmowe.Angaz).%OpenId(2)
+Set sOsoba = osoba.%Save()
+Do $system.OBJ.DisplayError(sOsoba)
+Set osoba = ##class(ProdukcjeFilmowe.Osoba).%OpenId(1)
+
+Set osoba = ##class(ProdukcjeFilmowe.Osoba).%New()
+Set osoba.Imie = "Eugeniusz"
+Set osoba.Nazwisko = "Black"
+Set osoba.DataUrodzenia = $ZDATEH("09/29/1992")
+Set osoba.Pochodzenie = "Wielka Brytania"
+Set osoba.AngazeFilmowe = ##class(ProdukcjeFilmowe.AngazFilm).%OpenId(2)
+Set osoba.AngazeSeriali = "Brak"
+Set sOsoba = osoba.%Save()
+Do $system.OBJ.DisplayError(sOsoba)
+Set osoba = ##class(ProdukcjeFilmowe.Osoba).%OpenId(2)
+
+Set osoba = ##class(ProdukcjeFilmowe.Osoba).%New()
+Set osoba.Imie = "Fiona"
+Set osoba.Nazwisko = "Diaz"
+Set osoba.DataUrodzenia = $ZDATEH("03/22/1988")
+Set osoba.Pochodzenie = "USA"
+Set osoba.AngazeFilmowe = ##class(ProdukcjeFilmowe.AngazFilm).%OpenId(3)
+Set osoba.AngazeSeriali = ##class(ProdukcjeFilmowe.Angaz).%OpenId(1)
+Set sOsoba = osoba.%Save()
+Do $system.OBJ.DisplayError(sOsoba)
+Set osoba = ##class(ProdukcjeFilmowe.Osoba).%OpenId(3)
+
+Set osoba = ##class(ProdukcjeFilmowe.Osoba).%New()
+Set osoba.Imie = "Perry"
+Set osoba.Nazwisko = "Bolton"
+Set osoba.DataUrodzenia = $ZDATEH("02/22/1969")
+Set osoba.Pochodzenie = "Wielka Brytania"
+Set osoba.AngazeFilmowe = ##class(ProdukcjeFilmowe.AngazFilm).%OpenId(4)
+Set osoba.AngazeSeriali = ##class(ProdukcjeFilmowe.Angaz).%OpenId(2)
+Set sOsoba = osoba.%Save()
+Do $system.OBJ.DisplayError(sOsoba)
+Set osoba = ##class(ProdukcjeFilmowe.Osoba).%OpenId(4)
+
+Set osoba = ##class(ProdukcjeFilmowe.Osoba).%New()
+Set osoba.Imie = "Alan"
+Set osoba.Nazwisko = "King"
+Set osoba.DataUrodzenia = $ZDATEH("11/03/1991")
+Set osoba.Pochodzenie = "Wielka Brytania"
+Set osoba.AngazeFilmowe = "Brak"
+Set osoba.AngazeSeriali = ##class(ProdukcjeFilmowe.Angaz).%OpenId(1)
+Set sOsoba = osoba.%Save()
+Do $system.OBJ.DisplayError(sOsoba)
+Set osoba = ##class(ProdukcjeFilmowe.Osoba).%OpenId(5)
+
+Set osoba = ##class(ProdukcjeFilmowe.Osoba).%New()
+Set osoba.Imie = "Skyler"
+Set osoba.Nazwisko = "Weaver"
+Set osoba.DataUrodzenia = $ZDATEH("05/13/1977")
+Set osoba.Pochodzenie = "USA"
+Set osoba.AngazeFilmowe = ##class(ProdukcjeFilmowe.AngazFilm).%OpenId(1)
+Set osoba.AngazeSeriali = ##class(ProdukcjeFilmowe.Angaz).%OpenId(2)
+Set sOsoba = osoba.%Save()
+Do $system.OBJ.DisplayError(sOsoba)
+Set osoba = ##class(ProdukcjeFilmowe.Osoba).%OpenId(6)
+
+Set osoba = ##class(ProdukcjeFilmowe.Osoba).%New()
+Set osoba.Imie = "Noble"
+Set osoba.Nazwisko = "Klein"
+Set osoba.DataUrodzenia = $ZDATEH("12/10/1984")
+Set osoba.Pochodzenie = "USA"
+Set osoba.AngazeFilmowe = ##class(ProdukcjeFilmowe.AngazFilm).%OpenId(2)
+Set osoba.AngazeSeriali = ##class(ProdukcjeFilmowe.Angaz).%OpenId(1)
+Set sOsoba = osoba.%Save()
+Do $system.OBJ.DisplayError(sOsoba)
+Set osoba = ##class(ProdukcjeFilmowe.Osoba).%OpenId(7)
+
+
+
+Set odcinek = ##class(ProdukcjeFilmowe.Odcinek).%New()
+Set odcinek.NrOdcinka = 1
+Set odcinek.NrSezonu = 1
+Set odcinek.CzasTrwania = 55
+Set odcinek.Angaze = ##class(ProdukcjeFilmowe.Angaz).%OpenId(1)
+Set sOdcinek = odcinek.%Save()
+Do $system.OBJ.DisplayError(sOdcinek)
+Set odcinek = ##class(ProdukcjeFilmowe.Odcinek).%OpenId(1)
+
+Set odcinek = ##class(ProdukcjeFilmowe.Odcinek).%New()
+Set odcinek.NrOdcinka = 2
+Set odcinek.NrSezonu = 1
+Set odcinek.CzasTrwania = 58
+Set odcinek.Angaze = ##class(ProdukcjeFilmowe.Angaz).%OpenId(1)
+Set sOdcinek = odcinek.%Save()
+Do $system.OBJ.DisplayError(sOdcinek)
+Set odcinek = ##class(ProdukcjeFilmowe.Odcinek).%OpenId(2)
+
+Set odcinek = ##class(ProdukcjeFilmowe.Odcinek).%New()
+Set odcinek.NrOdcinka = 3
+Set odcinek.NrSezonu = 1
+Set odcinek.CzasTrwania = 48
+Set odcinek.Angaze = ##class(ProdukcjeFilmowe.Angaz).%OpenId(1)
+Set sOdcinek = odcinek.%Save()
+Do $system.OBJ.DisplayError(sOdcinek)
+Set odcinek = ##class(ProdukcjeFilmowe.Odcinek).%OpenId(3)
+
+Set odcinek = ##class(ProdukcjeFilmowe.Odcinek).%New()
+Set odcinek.NrOdcinka = 1
+Set odcinek.NrSezonu = 2
+Set odcinek.CzasTrwania = 42
+Set odcinek.Angaze = ##class(ProdukcjeFilmowe.Angaz).%OpenId(1)
+Set sOdcinek = odcinek.%Save()
+Do $system.OBJ.DisplayError(sOdcinek)
+Set odcinek = ##class(ProdukcjeFilmowe.Odcinek).%OpenId(4)
+
+Set odcinek = ##class(ProdukcjeFilmowe.Odcinek).%New()
+Set odcinek.NrOdcinka = 2
+Set odcinek.NrSezonu = 2
+Set odcinek.CzasTrwania = 51
+Set odcinek.Angaze = ##class(ProdukcjeFilmowe.Angaz).%OpenId(1)
+Set sOdcinek = odcinek.%Save()
+Do $system.OBJ.DisplayError(sOdcinek)
+Set odcinek = ##class(ProdukcjeFilmowe.Odcinek).%OpenId(5)
+
+Set odcinek = ##class(ProdukcjeFilmowe.Odcinek).%New()
+Set odcinek.NrOdcinka = 1
+Set odcinek.NrSezonu = 3
+Set odcinek.CzasTrwania = 46
+Set odcinek.Angaze = ##class(ProdukcjeFilmowe.Angaz).%OpenId(1)
+Set sOdcinek = odcinek.%Save()
+Do $system.OBJ.DisplayError(sOdcinek)
+Set odcinek = ##class(ProdukcjeFilmowe.Odcinek).%OpenId(6)
+
+Set odcinek = ##class(ProdukcjeFilmowe.Odcinek).%New()
+Set odcinek.NrOdcinka = 2
+Set odcinek.NrSezonu = 3
+Set odcinek.CzasTrwania = 49
+Set odcinek.Angaze = ##class(ProdukcjeFilmowe.Angaz).%OpenId(1)
+Set sOdcinek = odcinek.%Save()
+Do $system.OBJ.DisplayError(sOdcinek)
+Set odcinek = ##class(ProdukcjeFilmowe.Odcinek).%OpenId(7)
+
+Set odcinek = ##class(ProdukcjeFilmowe.Odcinek).%New()
+Set odcinek.NrOdcinka = 3
+Set odcinek.NrSezonu = 3
+Set odcinek.CzasTrwania = 52
+Set odcinek.Angaze = ##class(ProdukcjeFilmowe.Angaz).%OpenId(1)
+Set sOdcinek = odcinek.%Save()
+Do $system.OBJ.DisplayError(sOdcinek)
+Set odcinek = ##class(ProdukcjeFilmowe.Odcinek).%OpenId(8)
+
+
+
+Set serial = ##class(ProdukcjeFilmowe.Serial).%New()
+Set serial.Tytul = "Game Of Phones"
+Set serial.DataWydania = $ZDATEH("11/11/1998")
+Set serial.DataZakonczeniaEmisji = $ZDATEH("05/16/2018")
+Set serial.Gatunek = "Przygodowy"
+Set serial.Odcinki = ##class(ProdukcjeFilmowe.Odcinek).%OpenId(7)
+
+Set sSerial = serial.%Save()
+Do $system.OBJ.DisplayError(sSerial)
+Set serial = ##class(ProdukcjeFilmowe.Serial).%OpenId(1)
+
+Set serial = ##class(ProdukcjeFilmowe.Serial).%New()
+Set serial.Tytul = "Breaking Good"
+Set serial.DataWydania = $ZDATEH("09/17/2005")
+Set serial.DataZakonczeniaEmisji = $ZDATEH("03/24/2010")
+Set serial.Gatunek = "Dramat"
+Set serial.Odcinki = ##class(ProdukcjeFilmowe.Odcinek).%OpenId(1)
+Set sSerial = serial.%Save()
+Do $system.OBJ.DisplayError(sSerial)
+Set serial = ##class(ProdukcjeFilmowe.Serial).%OpenId(2)
+
+
+Set serial = ##class(ProdukcjeFilmowe.Serial).%New()
+Set serial.Tytul = "Grecja"
+Set serial.DataWydania = $ZDATEH("09/19/2003")
+Set serial.DataZakonczeniaEmisji = $ZDATEH("07/03/2012")
+Set serial.Gatunek = "Historyczny"
+Set serial.Odcinki = ##class(ProdukcjeFilmowe.Odcinek).%OpenId(1)
+Set sSerial = serial.%Save()
+Do $system.OBJ.DisplayError(sSerial)
+Set serial = ##class(ProdukcjeFilmowe.Serial).%OpenId(3)
+
+
+Set film = ##class(ProdukcjeFilmowe.Film).%New()
+Set film.Tytul = "Ogniem i Wodą"
+Set film.DataWydania = $ZDATEH("12/10/2010")
+Set film.Gatunek = "Dramat"
+Set film.BoxOffice = 5000
+Set film.CzasTrwania = 120
+Set film.AngazeF = ##class(ProdukcjeFilmowe.AngazFilm).%OpenId(1)
+Set sFilm = film.%Save()
+Do $system.OBJ.DisplayError(sFilm)
+Set film = ##class(ProdukcjeFilmowe.Film).%OpenId(1)
+
+Set film = ##class(ProdukcjeFilmowe.Film).%New()
+Set film.Tytul = "Avengers The StartGame"
+Set film.DataWydania = $ZDATEH("12/24/2014")
+Set film.Gatunek = "Science Fiction"
+Set film.BoxOffice = 70000
+Set film.CzasTrwania = 140
+Set film.AngazeF = ##class(ProdukcjeFilmowe.AngazFilm).%OpenId(1)
+Set sFilm = film.%Save()
+Do $system.OBJ.DisplayError(sFilm)
+Set film = ##class(ProdukcjeFilmowe.Film).%OpenId(2)
+
+Set film = ##class(ProdukcjeFilmowe.Film).%New()
+Set film.Tytul = "Elephant-Man"
+Set film.DataWydania = $ZDATEH("01/17/2012")
+Set film.Gatunek = "Przygodowy"
+Set film.BoxOffice = 45000
+Set film.CzasTrwania = 112
+Set film.AngazeF = ##class(ProdukcjeFilmowe.AngazFilm).%OpenId(1)
+Set sFilm = film.%Save()
+Do $system.OBJ.DisplayError(sFilm)
+Set film = ##class(ProdukcjeFilmowe.Film).%OpenId(3)
+
+Set film = ##class(ProdukcjeFilmowe.Film).%New()
+Set film.Tytul = "The Pink Panther - Wakanda 4eva"
+Set film.DataWydania = $ZDATEH("09/11/2010")
+Set film.Gatunek = "Animowany"
+Set film.BoxOffice = 9500
+Set film.CzasTrwania = 160
+Set film.AngazeF = ##class(ProdukcjeFilmowe.AngazFilm).%OpenId(1)
+Set sFilm = film.%Save()
+Do $system.OBJ.DisplayError(sFilm)
+Set film = ##class(ProdukcjeFilmowe.Film).%OpenId(4)
