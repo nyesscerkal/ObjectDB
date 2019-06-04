@@ -1,0 +1,34 @@
+Do $SYSTEM.SQL.Shell()
+
+Truncate table ProdukcjeFilmowe.Osoba
+Truncate table ProdukcjeFilmowe.Film
+Truncate table ProdukcjeFilmowe.Serial
+Truncate table ProdukcjeFilmowe.AngazFilm
+Truncate table ProdukcjeFilmowe.Angaz
+Truncate table ProdukcjeFilmowe.Odcinek
+
+select * from ProdukcjeFilmowe.AngazFilm
+select * from ProdukcjeFilmowe.Angaz
+select * from ProdukcjeFilmowe.Osoba
+select * from ProdukcjeFilmowe.Odcinek
+select * from ProdukcjeFilmowe.Serial
+select * from ProdukcjeFilmowe.Film
+
+
+Set angazF = ##class(ProdukcjeFilmowe.AngazFilm).%OpenId(2)
+zwrite angazF.zmienBonus(40000)
+
+Set angaz = ##class(ProdukcjeFilmowe.Angaz).%OpenId(2)
+zwrite angaz.zmienBonus(30000)
+
+Set osoba = ##class(ProdukcjeFilmowe.Osoba).%OpenId(7)
+zwrite osoba.podajDane()
+
+Set film = ##class(ProdukcjeFilmowe.Film).%OpenId(4)
+zwrite film.podajInformacje()
+zwrite film.aktualizujBoxOffice(300000)
+zwrite film.podajInformacje()
+
+Set serial = ##class(ProdukcjeFilmowe.Serial).%OpenId(2)
+zwrite serial.podajInformacje()
+zwrite serial.obliczDlEmisji()
