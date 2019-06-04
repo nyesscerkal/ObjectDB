@@ -1,0 +1,489 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Export generator="Cache" version="25" zv="Cache for Windows (x86-64) 2016.2.1 (Build 803U_SU)" ts="2019-06-03 22:44:37">
+<Class name="ProdukcjeFilmowe.Angaz">
+<Super>%Persistent,%Populate,%XML.Adaptor,%ZEN.DataModel.Adaptor</Super>
+<TimeChanged>65164,34403.013994</TimeChanged>
+<TimeCreated>65155,53237.231649</TimeCreated>
+
+<Property name="Rola">
+<Type>Rola</Type>
+</Property>
+
+<Property name="Bonus">
+<Type>%Integer</Type>
+</Property>
+
+<Property name="Angaze">
+<Type>ProdukcjeFilmowe.Odcinek</Type>
+<Cardinality>many</Cardinality>
+<Inverse>Angaze</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Property name="AngazeSeriali">
+<Type>ProdukcjeFilmowe.Osoba</Type>
+<Cardinality>many</Cardinality>
+<Inverse>AngazeSeriali</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Storage name="Default">
+<Type>%Library.CacheStorage</Type>
+<DataLocation>^ProdukcjeFilmowe.AngazD</DataLocation>
+<DefaultData>AngazDefaultData</DefaultData>
+<IdLocation>^ProdukcjeFilmowe.AngazD</IdLocation>
+<IndexLocation>^ProdukcjeFilmowe.AngazI</IndexLocation>
+<StreamLocation>^ProdukcjeFilmowe.AngazS</StreamLocation>
+<Data name="AngazDefaultData">
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+<Value name="2">
+<Value>Bonus</Value>
+</Value>
+<Value name="3">
+<Value>Rola</Value>
+</Value>
+</Data>
+</Storage>
+</Class>
+
+
+<Class name="ProdukcjeFilmowe.AngazFilm">
+<Super>%Persistent,%Populate,%XML.Adaptor,%ZEN.DataModel.Adaptor</Super>
+<TimeChanged>65155,66984.961787</TimeChanged>
+<TimeCreated>65155,53264.22624</TimeCreated>
+
+<Property name="Bonus">
+<Type>%Integer</Type>
+</Property>
+
+<Property name="Rola">
+<Type>Rola</Type>
+</Property>
+
+<Property name="AngazeFilmowe">
+<Type>ProdukcjeFilmowe.Osoba</Type>
+<Cardinality>many</Cardinality>
+<Inverse>AngazeFilmowe</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Property name="AngazeF">
+<Type>ProdukcjeFilmowe.Film</Type>
+<Cardinality>many</Cardinality>
+<Inverse>AngazeF</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Storage name="Default">
+<Type>%Library.CacheStorage</Type>
+<DataLocation>^ProdukcjeFilmowe.AngazFilmD</DataLocation>
+<DefaultData>AngazFilmDefaultData</DefaultData>
+<IdLocation>^ProdukcjeFilmowe.AngazFilmD</IdLocation>
+<IndexLocation>^ProdukcjeFilmowe.AngazFilmI</IndexLocation>
+<StreamLocation>^ProdukcjeFilmowe.AngazFilmS</StreamLocation>
+<Data name="AngazFilmDefaultData">
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+<Value name="2">
+<Value>Bonus</Value>
+</Value>
+<Value name="3">
+<Value>Rola</Value>
+</Value>
+</Data>
+</Storage>
+</Class>
+
+
+<Class name="ProdukcjeFilmowe.Film">
+<Super>%Persistent,%Populate,%XML.Adaptor,%ZEN.DataModel.Adaptor,ProdukcjeFilmowe.Produkcja</Super>
+<TimeChanged>65167,79014.272626</TimeChanged>
+<TimeCreated>65155,53501.972886</TimeCreated>
+
+<Property name="BoxOffice">
+<Type>%Integer</Type>
+</Property>
+
+<Property name="CzasTrwania">
+<Type>%Integer</Type>
+</Property>
+
+<Property name="AngazeF">
+<Type>ProdukcjeFilmowe.AngazFilm</Type>
+<Cardinality>one</Cardinality>
+<Inverse>AngazeF</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Method name="getInfo">
+<ReturnType>%String</ReturnType>
+<Implementation><![CDATA[	Return "Szczegóły: "_..BoxOffice_" "_..CzasTrwania
+]]></Implementation>
+</Method>
+
+<Storage name="Default">
+<Type>%Library.CacheStorage</Type>
+<DataLocation>^ProdukcjeFilmowe.FilmD</DataLocation>
+<DefaultData>FilmDefaultData</DefaultData>
+<IdLocation>^ProdukcjeFilmowe.FilmD</IdLocation>
+<IndexLocation>^ProdukcjeFilmowe.FilmI</IndexLocation>
+<StreamLocation>^ProdukcjeFilmowe.FilmS</StreamLocation>
+<Data name="FilmDefaultData">
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+<Value name="2">
+<Value>BoxOffice</Value>
+</Value>
+<Value name="3">
+<Value>CzasTrwania</Value>
+</Value>
+<Value name="4">
+<Value>AngazeF</Value>
+</Value>
+<Value name="5">
+<Value>DataWydania</Value>
+</Value>
+<Value name="6">
+<Value>Gatunek</Value>
+</Value>
+<Value name="7">
+<Value>Tytuł</Value>
+</Value>
+<Value name="8">
+<Value>Tytul</Value>
+</Value>
+</Data>
+</Storage>
+</Class>
+
+
+<Class name="ProdukcjeFilmowe.Odcinek">
+<Super>%Persistent,%Populate,%XML.Adaptor,%ZEN.DataModel.Adaptor</Super>
+<TimeChanged>65167,47480.262458</TimeChanged>
+<TimeCreated>65155,45415.17435</TimeCreated>
+
+<Property name="NrOdcinka">
+<Type>%Integer</Type>
+</Property>
+
+<Property name="NrSezonu">
+<Type>%Integer</Type>
+</Property>
+
+<Property name="CzasTrwania">
+<Type>%Integer</Type>
+</Property>
+
+<Property name="Odcinki">
+<Type>ProdukcjeFilmowe.Serial</Type>
+<Cardinality>many</Cardinality>
+<Inverse>Odcinki</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Property name="Angaze">
+<Type>ProdukcjeFilmowe.Angaz</Type>
+<Cardinality>one</Cardinality>
+<Inverse>Angaze</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Index name="AngazeIndex">
+<Properties>Angaze</Properties>
+</Index>
+
+<Storage name="Default">
+<Type>%Library.CacheStorage</Type>
+<DataLocation>^ProdukcjeFilmowe.OdcinekD</DataLocation>
+<DefaultData>OdcinekDefaultData</DefaultData>
+<IdLocation>^ProdukcjeFilmowe.OdcinekD</IdLocation>
+<IndexLocation>^ProdukcjeFilmowe.OdcinekI</IndexLocation>
+<StreamLocation>^ProdukcjeFilmowe.OdcinekS</StreamLocation>
+<Data name="OdcinekDefaultData">
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+<Value name="2">
+<Value>NrOdcinka</Value>
+</Value>
+<Value name="3">
+<Value>NrSezonu</Value>
+</Value>
+<Value name="4">
+<Value>czasTrwania</Value>
+</Value>
+<Value name="5">
+<Value>Angaze</Value>
+</Value>
+<Value name="6">
+<Value>CzasTrwania</Value>
+</Value>
+</Data>
+</Storage>
+</Class>
+
+
+<Class name="ProdukcjeFilmowe.Osoba">
+<Super>%Persistent,%Populate,%XML.Adaptor,%ZEN.DataModel.Adaptor</Super>
+<TimeChanged>65167,47472.911246</TimeChanged>
+<TimeCreated>65155,52738.576624</TimeCreated>
+
+<Property name="Imie">
+<Type>%String</Type>
+</Property>
+
+<Property name="Nazwisko">
+<Type>%String</Type>
+</Property>
+
+<Property name="DataUrodzenia">
+<Type>%Date</Type>
+</Property>
+
+<Property name="Pochodzenie">
+<Type>%String</Type>
+</Property>
+
+<Property name="AngazeSeriali">
+<Type>ProdukcjeFilmowe.Angaz</Type>
+<Cardinality>one</Cardinality>
+<Inverse>AngazeSeriali</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Property name="AngazeFilmowe">
+<Type>ProdukcjeFilmowe.AngazFilm</Type>
+<Cardinality>one</Cardinality>
+<Inverse>AngazeFilmowe</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Method name="getPersonalData">
+<ReturnType>%String</ReturnType>
+<Implementation><![CDATA[	Return ..Imie_" "_..Nazwisko_" urodzony w "_..Pochodzenie_" dnia "_$ZDATE(..DataUrodzenia)
+]]></Implementation>
+</Method>
+
+<Index name="AngazIndex">
+<Properties>AngazeSeriali</Properties>
+</Index>
+
+<Index name="AngazFilmIndex">
+<Properties>AngazeFilmowe</Properties>
+</Index>
+
+<Storage name="Default">
+<Type>%Library.CacheStorage</Type>
+<DataLocation>^ProdukcjeFilmowe.OsobaD</DataLocation>
+<DefaultData>OsobaDefaultData</DefaultData>
+<IdLocation>^ProdukcjeFilmowe.OsobaD</IdLocation>
+<IndexLocation>^ProdukcjeFilmowe.OsobaI</IndexLocation>
+<StreamLocation>^ProdukcjeFilmowe.OsobaS</StreamLocation>
+<ExtentSize>10</ExtentSize>
+<Data name="OsobaDefaultData">
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+<Value name="2">
+<Value>Imie</Value>
+</Value>
+<Value name="3">
+<Value>Nazwisko</Value>
+</Value>
+<Value name="4">
+<Value>DataUrodzenia</Value>
+</Value>
+<Value name="5">
+<Value>Pochodzenie</Value>
+</Value>
+<Value name="6">
+<Value>OsobyA</Value>
+</Value>
+<Value name="7">
+<Value>OsobyAF</Value>
+</Value>
+<Value name="8">
+<Value>AngazeSeriali</Value>
+</Value>
+<Value name="9">
+<Value>AngazeFilmowe</Value>
+</Value>
+</Data>
+<Property name="%%CLASSNAME">
+<Selectivity>100.0000%</Selectivity>
+<AverageFieldSize>1</AverageFieldSize>
+</Property>
+<Property name="%%ID">
+<Selectivity>1</Selectivity>
+<AverageFieldSize>1.1</AverageFieldSize>
+</Property>
+<Property name="DataUrodzenia">
+<Selectivity>10.0000%</Selectivity>
+<AverageFieldSize>5</AverageFieldSize>
+</Property>
+<Property name="Imie">
+<Selectivity>10.0000%</Selectivity>
+<AverageFieldSize>4.9</AverageFieldSize>
+</Property>
+<Property name="Nazwisko">
+<Selectivity>10.0000%</Selectivity>
+<AverageFieldSize>4.9</AverageFieldSize>
+</Property>
+<Property name="OsobyA">
+<Selectivity>100.0000%</Selectivity>
+<AverageFieldSize>1</AverageFieldSize>
+</Property>
+<Property name="OsobyAF">
+<Selectivity>100.0000%</Selectivity>
+<AverageFieldSize>1</AverageFieldSize>
+</Property>
+<Property name="Pochodzenie">
+<Selectivity>10.0000%</Selectivity>
+<AverageFieldSize>4.9</AverageFieldSize>
+</Property>
+<SQLMap name="AngazFilmIndex">
+<BlockCount>-4</BlockCount>
+</SQLMap>
+<SQLMap name="AngazIndex">
+<BlockCount>-4</BlockCount>
+</SQLMap>
+<SQLMap name="IDKEY">
+<BlockCount>-4</BlockCount>
+</SQLMap>
+</Storage>
+</Class>
+
+
+<Class name="ProdukcjeFilmowe.Produkcja">
+<Abstract>1</Abstract>
+<TimeChanged>65164,43242.133599</TimeChanged>
+<TimeCreated>65154,76739.390826</TimeCreated>
+
+<Property name="Tytul">
+<Type>%String</Type>
+</Property>
+
+<Property name="DataWydania">
+<Type>%Date</Type>
+</Property>
+
+<Property name="Gatunek">
+<Type>%String</Type>
+</Property>
+
+<Method name="getInfo">
+<ReturnType>%String</ReturnType>
+<Implementation><![CDATA[		Return ..Tytul_" "_..DataWydania_" "_..Gatunek
+]]></Implementation>
+</Method>
+</Class>
+
+
+<Class name="ProdukcjeFilmowe.Rola">
+<Super>%SerialObject,%Populate,%XML.Adaptor,%ZEN.DataModel.Adaptor</Super>
+<TimeChanged>65155,62385.950425</TimeChanged>
+<TimeCreated>65155,52936.675936</TimeCreated>
+
+<Property name="Nazwa">
+<Type>%String</Type>
+</Property>
+
+<Property name="Stawka">
+<Type>%Integer</Type>
+</Property>
+
+<Storage name="Default">
+<Type>%Library.CacheSerialState</Type>
+<State>RolaState</State>
+<StreamLocation>^ProdukcjeFilmowe.RolaS</StreamLocation>
+<Data name="RolaState">
+<Structure>listnode</Structure>
+<Subscript/>
+<Value name="1">
+<Value>Nazwa</Value>
+</Value>
+<Value name="2">
+<Value>Stawka</Value>
+</Value>
+</Data>
+</Storage>
+</Class>
+
+
+<Class name="ProdukcjeFilmowe.Serial">
+<Super>%Persistent,%Populate,%XML.Adaptor,%ZEN.DataModel.Adaptor,ProdukcjeFilmowe.Produkcja</Super>
+<TimeChanged>65167,80505.494037</TimeChanged>
+<TimeCreated>65155,44988.999545</TimeCreated>
+
+<Property name="DataZakonczeniaEmisji">
+<Type>%Date</Type>
+</Property>
+
+<Property name="Odcinki">
+<Type>ProdukcjeFilmowe.Odcinek</Type>
+<Cardinality>one</Cardinality>
+<Inverse>Odcinki</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Method name="getInfo">
+<ReturnType>%String</ReturnType>
+<Implementation><![CDATA[	Return "'"_..Tytul_"' zostal wydany dnia "_$ZDATE(..DataWydania)_", jest serialem z gadunku: "_..Gatunek
+]]></Implementation>
+</Method>
+
+<Method name="obliczDlEmisji">
+<ReturnType>%String</ReturnType>
+<Implementation><![CDATA[
+	Set Dlugosc = DateDiff("yyyy",$ZDATE(..DataWydania), $ZDATE(..DataZakonczeniaEmisji))
+	Return "Emisja trwala "_Dlugosc
+]]></Implementation>
+</Method>
+
+<Index name="OdcinekIndex">
+<Properties>Odcinki</Properties>
+</Index>
+
+<Storage name="Default">
+<Type>%Library.CacheStorage</Type>
+<DataLocation>^ProdukcjeFilmowe.SerialD</DataLocation>
+<DefaultData>SerialDefaultData</DefaultData>
+<IdLocation>^ProdukcjeFilmowe.SerialD</IdLocation>
+<IndexLocation>^ProdukcjeFilmowe.SerialI</IndexLocation>
+<State>SerialState</State>
+<StreamLocation>^ProdukcjeFilmowe.SerialS</StreamLocation>
+<Data name="SerialDefaultData">
+<Subscript>"1"</Subscript>
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+<Value name="2">
+<Value>Tytul</Value>
+</Value>
+</Data>
+<Data name="SerialState">
+<Value name="1">
+<Value>DataZakonczeniaEmisji</Value>
+</Value>
+<Value name="2">
+<Value>DataWydania</Value>
+</Value>
+<Value name="3">
+<Value>Gatunek</Value>
+</Value>
+<Value name="4">
+<Value>Odcinki</Value>
+</Value>
+<Value name="5">
+<Value>Tytuł</Value>
+</Value>
+</Data>
+</Storage>
+</Class>
+
+
+</Export>
