@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Export generator="Cache" version="25" zv="Cache for Windows (x86-64) 2016.2.1 (Build 803U_SU)" ts="2019-06-03 22:44:37">
+<Export generator="Cache" version="25" zv="Cache for Windows (x86-64) 2016.2.1 (Build 803U_SU)" ts="2019-06-04 22:07:18">
 <Class name="ProdukcjeFilmowe.Angaz">
 <Super>%Persistent,%Populate,%XML.Adaptor,%ZEN.DataModel.Adaptor</Super>
-<TimeChanged>65164,34403.013994</TimeChanged>
+<TimeChanged>65168,79271.687851</TimeChanged>
 <TimeCreated>65155,53237.231649</TimeCreated>
 
 <Property name="Rola">
@@ -26,6 +26,16 @@
 <Inverse>AngazeSeriali</Inverse>
 <Relationship>1</Relationship>
 </Property>
+
+<Method name="zmienBonus">
+<FormalSpec>update:%Integer</FormalSpec>
+<ReturnType>%String</ReturnType>
+<Implementation><![CDATA[
+	set tmp = ..Bonus 
+	Set ..Bonus = update
+	return "Zmieniono bonus za role '"_..Rola.Nazwa_"' z kwoty "_tmp_" na kwote "_..Bonus_". Teraz osoba grajaca te serialowa role moze zarobic nawet "_(..Bonus+..Rola.Stawka)_"! - wliczajac poprzednia stawke za role wynoszaca "_..Rola.Stawka
+]]></Implementation>
+</Method>
 
 <Storage name="Default">
 <Type>%Library.CacheStorage</Type>
@@ -51,7 +61,7 @@
 
 <Class name="ProdukcjeFilmowe.AngazFilm">
 <Super>%Persistent,%Populate,%XML.Adaptor,%ZEN.DataModel.Adaptor</Super>
-<TimeChanged>65155,66984.961787</TimeChanged>
+<TimeChanged>65168,79279.610811</TimeChanged>
 <TimeCreated>65155,53264.22624</TimeCreated>
 
 <Property name="Bonus">
@@ -75,6 +85,16 @@
 <Inverse>AngazeF</Inverse>
 <Relationship>1</Relationship>
 </Property>
+
+<Method name="zmienBonus">
+<FormalSpec>update:%Integer</FormalSpec>
+<ReturnType>%String</ReturnType>
+<Implementation><![CDATA[
+	set tmp = ..Bonus 
+	Set ..Bonus = update
+	return "Zmieniono bonus za role '"_..Rola.Nazwa_"' z kwoty "_tmp_" na kwote "_..Bonus_". Teraz osoba grajaca te filmowa role moze zarobic nawet "_(..Bonus+..Rola.Stawka)_"! - wliczajac poprzednia stawke za role wynoszaca "_..Rola.Stawka
+]]></Implementation>
+</Method>
 
 <Storage name="Default">
 <Type>%Library.CacheStorage</Type>
@@ -100,7 +120,7 @@
 
 <Class name="ProdukcjeFilmowe.Film">
 <Super>%Persistent,%Populate,%XML.Adaptor,%ZEN.DataModel.Adaptor,ProdukcjeFilmowe.Produkcja</Super>
-<TimeChanged>65167,79014.272626</TimeChanged>
+<TimeChanged>65168,79429.10093</TimeChanged>
 <TimeCreated>65155,53501.972886</TimeCreated>
 
 <Property name="BoxOffice">
@@ -118,9 +138,18 @@
 <Relationship>1</Relationship>
 </Property>
 
-<Method name="getInfo">
+<Method name="podajInformacje">
 <ReturnType>%String</ReturnType>
-<Implementation><![CDATA[	Return "Szczegóły: "_..BoxOffice_" "_..CzasTrwania
+<Implementation><![CDATA[	Return "Box office filmu '"_..Tytul_"' wynosi "_..BoxOffice_"$. Film trwa "_..CzasTrwania_" minut"
+]]></Implementation>
+</Method>
+
+<Method name="aktualizujBoxOffice">
+<FormalSpec>update:%Integer</FormalSpec>
+<ReturnType>%String</ReturnType>
+<Implementation><![CDATA[
+	Set ..BoxOffice = update
+	return "Pomyslnie zaktualizowano BoxOffice filmu '"_..Tytul_"'. Nowa wartosc: "_..BoxOffice_"$"
 ]]></Implementation>
 </Method>
 
@@ -229,7 +258,7 @@
 
 <Class name="ProdukcjeFilmowe.Osoba">
 <Super>%Persistent,%Populate,%XML.Adaptor,%ZEN.DataModel.Adaptor</Super>
-<TimeChanged>65167,47472.911246</TimeChanged>
+<TimeChanged>65168,78773.225818</TimeChanged>
 <TimeCreated>65155,52738.576624</TimeCreated>
 
 <Property name="Imie">
@@ -262,9 +291,11 @@
 <Relationship>1</Relationship>
 </Property>
 
-<Method name="getPersonalData">
+<Method name="podajDane">
 <ReturnType>%String</ReturnType>
-<Implementation><![CDATA[	Return ..Imie_" "_..Nazwisko_" urodzony w "_..Pochodzenie_" dnia "_$ZDATE(..DataUrodzenia)
+<Implementation><![CDATA[
+	
+	Return ..Imie_" "_..Nazwisko_" urodzony w "_..Pochodzenie_" dnia "_$ZDATE(..DataUrodzenia)
 ]]></Implementation>
 </Method>
 
@@ -360,7 +391,7 @@
 
 <Class name="ProdukcjeFilmowe.Produkcja">
 <Abstract>1</Abstract>
-<TimeChanged>65164,43242.133599</TimeChanged>
+<TimeChanged>65168,76102.198231</TimeChanged>
 <TimeCreated>65154,76739.390826</TimeCreated>
 
 <Property name="Tytul">
@@ -375,9 +406,9 @@
 <Type>%String</Type>
 </Property>
 
-<Method name="getInfo">
+<Method name="podajInformacje">
 <ReturnType>%String</ReturnType>
-<Implementation><![CDATA[		Return ..Tytul_" "_..DataWydania_" "_..Gatunek
+<Implementation><![CDATA[		Return "'"_..Tytul_"' zostal wydany dnia "_$ZDATE(..DataWydania)_", jest serialem z gadunku: "_..Gatunek
 ]]></Implementation>
 </Method>
 </Class>
@@ -416,7 +447,7 @@
 
 <Class name="ProdukcjeFilmowe.Serial">
 <Super>%Persistent,%Populate,%XML.Adaptor,%ZEN.DataModel.Adaptor,ProdukcjeFilmowe.Produkcja</Super>
-<TimeChanged>65167,80505.494037</TimeChanged>
+<TimeChanged>65168,77565.016586</TimeChanged>
 <TimeCreated>65155,44988.999545</TimeCreated>
 
 <Property name="DataZakonczeniaEmisji">
@@ -430,17 +461,20 @@
 <Relationship>1</Relationship>
 </Property>
 
-<Method name="getInfo">
+<Method name="podajInformacje">
 <ReturnType>%String</ReturnType>
-<Implementation><![CDATA[	Return "'"_..Tytul_"' zostal wydany dnia "_$ZDATE(..DataWydania)_", jest serialem z gadunku: "_..Gatunek
+<Implementation><![CDATA[	Return "'"_..Tytul_"' zostal wydany dnia "_$ZDATE(..DataWydania)_", jest serialem z gadunku: "_..Gatunek_"."
 ]]></Implementation>
 </Method>
 
 <Method name="obliczDlEmisji">
 <ReturnType>%String</ReturnType>
 <Implementation><![CDATA[
-	Set Dlugosc = DateDiff("yyyy",$ZDATE(..DataWydania), $ZDATE(..DataZakonczeniaEmisji))
-	Return "Emisja trwala "_Dlugosc
+	Set date1 = $ZDATE(..DataWydania)
+	Set date2 = $ZDATE(..DataZakonczeniaEmisji)
+	Set x = "year"
+	&sql(Select DateDiff(:x, :date1, :date2) into :Dlugosc) 
+	Return "Emisje '"_..Tytul_"' rozpoczeto  dnia "_date1_", natomiast zakonczono dnia "_date2_". Dlugosc emisji trwala "_Dlugosc_" lat."
 ]]></Implementation>
 </Method>
 
